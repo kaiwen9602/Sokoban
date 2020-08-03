@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            padding:0;
+            margin:0;
+        }
+        body{
+            width: 100vw;
+            height: 100vh;
+            background-color: #343535;
+            overflow: hidden;
+        }
+        #game-screen {
+            display: grid;
+            position: relative;
+            margin:50px auto 5px;
+            width: 480px;
+            height: 480px;
+            background: url("ground.jpg") center/cover no-repeat;
+            grid-template-rows: repeat(16, 1fr);
+            grid-template-columns: repeat(16, 1fr);
+            row-gap: 0;
+            column-gap: 0;
+        }
+        .wall {
+            position: relative;
+            z-index: 2;
+            background: url("wall.jpg") center/cover no-repeat;
+        }
+        .player {
+            position: relative;
+            z-index: 2;
+            background: url("player.jpg") center/120px 120px no-repeat;
+            border-radius: 50%;
+        }
+        .trap {
+            position: relative;
+            z-index: 2;
+            background: url("trap.png") center/cover no-repeat;
+        }
+        .box {
+            position: relative;
+            z-index: 2;
+            background: url("box.jpg") center/cover no-repeat;
+        }
+        .ab-position{
+            position:absolute;
+            background: url("trap.png") center/cover no-repeat;
+            width: 30px;
+            height: 30px;
+            z-index: 1;
+        }
+        .btn-group{
+            text-align: center;
+        }
+        #which-level{
+            font-weight: bold;
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-screen">
+    </div>
+    <div class = "btn-group">
+        <span id = "which-level">第几关</span>
+        <input type="button" value="上一关" onclick="next_level(-1)">
+        <input type="button" id = "next" value="下一关" onclick="next_level(1)" disabled>
+        <input type="button" value="重玩本关/开始" onclick="next_level(0)">
+        <input type="button" value="游戏说明" onclick="control()">
+    </div>
+    <script src = "level.js"></script>
+    <script src= "sokoban.js"></script>
+</body>
+
+</html>
